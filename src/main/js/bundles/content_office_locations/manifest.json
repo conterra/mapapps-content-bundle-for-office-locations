@@ -1,0 +1,126 @@
+{
+    "Bundle-SymbolicName": "content_office_locations",
+    "Bundle-Version": "1.0.0",
+    "Bundle-Main": "",
+    "Bundle-Localization": [],
+    "Bundle-Name": "Content:Office Locations",
+    "Bundle-Description": "This bundle provides data and functionality for the content of office locations",
+    "Require-Bundle": [
+        {
+            "name": "featureinfo",
+            "version": "^3.1.1"
+        }, {
+            "name": "infoviewer",
+            "version": "^3.1.1"
+        }, {
+            "name": "contentviewer",
+            "version": "^3.1.1"
+        }, {
+            "name": "omnisearch",
+            "version": "^3.1.1"
+        }, {
+            "name": "agssearch",
+            "version": "^3.1.1"
+        }, {
+            "name": "map",
+            "version": "^3.1.1"
+        }
+    ],
+    "Components": [
+        {
+            "name": "SearchStoreRegistrator",
+            "properties": {
+                "storeDef": {
+                    "title": "Office Locations",
+                    "omniSearchSearchAttr": "name4",
+                    "url": "http://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer/0",
+                    "useIn": ["omnisearch", "selection"],
+                    "filterOptions": {
+                        "suggestContains": true
+                    },
+                    "omniSearchTypingDelay": 500,
+                    "omniSearchPageSize": 20,
+                    "omniSearchDefaultLabel": "Enter office location name...",
+                    "fetchIdProperty": true,
+                    "id": "id_query_officelocations"
+                }
+            },
+            "references": [{
+                    "name": "_agsStoreFactory",
+                    "providing": "ct.framework.api.ComponentFactory",
+                    "filter": "(Component-Name=AGSStore)"
+                }]
+        },
+        {
+            "name": "MapContentAdder",
+            "properties": {
+                "service": {
+                    "id": "id_map_officelocations",
+                    "title": "Office Locations",
+                    "url": "http://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer",
+                    "type": "AGS_DYNAMIC",
+                    "queryable": true,
+                    "layers": [
+                        {
+                            "id": "0",
+                            "title": "Office Locations"
+                        }
+                    ]
+                }
+            },
+            "references": [{
+                    "name": "_mapModel",
+                    "providing": "ct.mapping.map.MapModel"
+                }, {
+                    "name": "_mappingResourceRegistry",
+                    "providing": "ct.mapping.mapcontent.MappingResourceRegistry"
+                }]
+        },
+        {
+            "name": "ContentRegistration",
+            "impl": "ct/Stateful",
+            "provides": ["ct.contentviewer.ContentRule"],
+            "properties": {
+                "contentRules": [
+                    {
+                        "info": {
+                            "valueNotFoundString": "",
+                            "type": "CustomTemplate",
+                            "dataViewOptions": {
+                                "showPager": false,
+                                "showFilter": false,
+                                "showViewButtons": false,
+                                "itemsPerPage": 100,
+                                "DGRID": {
+                                    "checkboxSelection": false
+                                }
+                            },
+                            "title": "{name}",
+                            "showDetailsButton": false,
+                            "template": "<font color=\"#eeffff\" size=\"3\">{name}</font><br/><font color=\"#eeffff\" size=\"5\">{name3}</font><div><hr /><a target=\"_blank\" href='{link}'>{link}</a><br/><br/><a target=\"_blank\" href='https://www.google.de/?q={name4}#q={name4}'>Bei Google nachschlagen</a></div>"
+                        },
+                        "windowSize": {
+                            "w": 320,
+                            "h": 240
+                        },
+                        "matches": {
+                            "context": {
+                                "$or": [
+                                    {
+                                        "storeId": "id_query_officelocations"
+                                    },
+                                    {
+                                        "mapModelNodeId": "id_map_officelocations/0"
+                                    }
+                                ]
+                            }
+                        },
+                        "title": "Office Locations",
+                        "type": "Grid"
+                    }
+                ]
+            },
+            "references": []
+        }
+    ]
+}
