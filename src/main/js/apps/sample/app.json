@@ -37,8 +37,9 @@
                             "baseLayer": [
                                 {
                                     "id": "background1",
-                                    "title": "Image",
-                                    "service": "worldimage",
+                                    "title": "${service.canvas_dark}",
+                                    "service": "canvas_dark",
+                                    "layers": ["*"],
                                     "enabled": true
                                 }
                             ]
@@ -53,6 +54,12 @@
                             "id": "worldimage",
                             "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
                             "type": "AGS_TILED"
+                        },
+                        {
+                            "id": "canvas_dark",
+                            "url": "http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "Canvas Base"
                         }
                     ]
                 }

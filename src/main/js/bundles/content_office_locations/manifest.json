@@ -2,6 +2,7 @@
     "Bundle-SymbolicName": "content_office_locations",
     "Bundle-Version": "1.0.0",
     "Bundle-Name": "Content:Office Locations",
+    "Bundle-Localization": [],
     "Bundle-Description": "This bundle provides data and functionality for the content of office locations",
     "Product-Name": "map.apps Developer Network",
     "Require-Bundle": [
