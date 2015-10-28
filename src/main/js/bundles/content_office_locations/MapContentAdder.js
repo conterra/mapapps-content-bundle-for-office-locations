@@ -17,18 +17,21 @@
 define([
     "dojo/_base/declare",
     "ct/mapping/map/MapModelInitializer",
-    "ct/mapping/mapcontent/MappingResourceRegistryInitializer"
-], function (declare, MapModelInitializer, MappingResourceRegistryInitializer) {
+    "ct/mapping/mapcontent/MappingResourceRegistryInitializer",
+    "dojo/_base/array"
+], function (declare, MapModelInitializer, MappingResourceRegistryInitializer, d_array) {
     return declare([], {
         activate: function () {
             // read service settings from properties
             var properties = this._properties;
             var service = properties.service;
+            var baseLayer = properties.basemap;
 
             var mrr = this._mappingResourceRegistry;
             var serviceRef = service.id;
+            var baseLayerRef = baseLayer.id;
             var tmp = {
-                services: [service]
+                services: [service, baseLayer]
             };
             var mrrInitializer = new MappingResourceRegistryInitializer();
             mrrInitializer.initFromData(tmp, mrr);
@@ -39,21 +42,38 @@ define([
                         service: serviceRef,
                         enabled: true,
                         id: serviceRef
-                    }]
+                    }],
+                baseLayer: [
+                    {
+                        layers: ["*"],
+                        service: baseLayerRef,
+                        enabled: true,
+                        id: baseLayerRef
+                    }
+                ]
             };
             var mmi = new MapModelInitializer();
             var mapModel = this._mapModel;
+            var baseLayerChildren = mapModel.getBaseLayer().get("children");
+            d_array.forEach(baseLayerChildren, function (layer) {
+                layer.set("enabled", false);
+            });
             mmi.initMapModelFromData(mapModelDesc, mrr, mapModel);
         },
         deactivate: function () {
             var properties = this._properties;
             var service = properties.service;
-            var id = service.id;
+            var serviceId = service.id;
+            var baseLayer = properties.service;
+            var baseLayerId = baseLayer.id;
             var mapModel = this._mapModel;
-            mapModel.removeNodeById(id);
+            mapModel.removeNodeById(serviceId);
+            mapModel.removeNodeById(baseLayerId);
             var mrr = this._mappingResourceRegistry;
-            var resource = mrr.getMappingResourceByUniqueId(id);
-            mrr.removeMappingResource(resource);
+            var serviceResource = mrr.getMappingResourceByUniqueId(serviceId);
+            var baseLayerResource = mrr.getMappingResourceByUniqueId(baseLayerId);
+            mrr.removeMappingResource(serviceResource);
+            mrr.removeMappingResource(baseLayerResource);
             mapModel.fireModelStructureChanged({src: this});
         }
     });

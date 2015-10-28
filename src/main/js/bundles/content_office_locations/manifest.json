@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "content_office_locations",
-    "Bundle-Version": "1.0.0",
+    "Bundle-Version": "1.0.1",
     "Bundle-Name": "Content:Office Locations",
     "Bundle-Localization": [],
     "Bundle-Description": "This bundle provides data and functionality for the content of office locations",
@@ -66,6 +66,12 @@
                             "title": "Office Locations"
                         }
                     ]
+                },
+                "basemap": {
+                    "id": "canvas_dark",
+                    "url": "http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
+                    "type": "AGS_TILED",
+                    "title": "Canvas Base"
                 }
             },
             "references": [{

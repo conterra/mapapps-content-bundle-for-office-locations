@@ -11,7 +11,8 @@
             "windowmanager",
             "toolset",
             "toolrules",
-            "content_office_locations"
+            "content_office_locations",
+            "basemaptoggler"
         ]
     },
     "bundles": {
@@ -36,9 +37,9 @@
                             "operationalLayer": [],
                             "baseLayer": [
                                 {
-                                    "id": "background1",
-                                    "title": "${service.canvas_dark}",
-                                    "service": "canvas_dark",
+                                    "id": "worldimage",
+                                    "title": "World Topo",
+                                    "service": "topo",
                                     "layers": ["*"],
                                     "enabled": true
                                 }
@@ -51,15 +52,9 @@
                 "_knownServices": {
                     "services": [
                         {
-                            "id": "worldimage",
+                            "id": "topo",
                             "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
                             "type": "AGS_TILED"
-                        },
-                        {
-                            "id": "canvas_dark",
-                            "url": "http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
-                            "type": "AGS_TILED",
-                            "title": "Canvas Base"
                         }
                     ]
                 }
