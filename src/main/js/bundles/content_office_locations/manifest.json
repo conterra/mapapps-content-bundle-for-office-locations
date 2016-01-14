@@ -4,7 +4,7 @@
     "Bundle-Name": "Content:Office Locations",
     "Bundle-Localization": [],
     "Bundle-Description": "This bundle provides data and functionality for the content of office locations",
-    "Product-Name": "map.apps Developer Network",
+    "Product-Name": "con terra Developer Network",
     "Require-Bundle": [
         {
             "name": "featureinfo",
