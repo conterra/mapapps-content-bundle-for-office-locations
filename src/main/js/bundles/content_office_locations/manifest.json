@@ -33,7 +33,7 @@
                 "storeDef": {
                     "title": "Office Locations",
                     "omniSearchSearchAttr": "name4",
-                    "url": "http://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer/0",
+                    "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer/0",
                     "useIn": ["omnisearch", "selection"],
                     "filterOptions": {
                         "suggestContains": true
@@ -57,7 +57,7 @@
                 "service": {
                     "id": "id_map_officelocations",
                     "title": "Office Locations",
-                    "url": "http://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer",
+                    "url": "https://services.conterra.de/arcgis/rest/services/mapapps/Standorte/MapServer",
                     "type": "AGS_DYNAMIC",
                     "queryable": true,
                     "layers": [
@@ -69,7 +69,7 @@
                 },
                 "basemap": {
                     "id": "canvas_dark",
-                    "url": "http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
+                    "url": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
                     "type": "AGS_TILED",
                     "title": "Canvas Base"
                 }
