@@ -1,6 +1,6 @@
 {
     "Bundle-SymbolicName": "content_office_locations",
-    "Bundle-Version": "1.0.2-SNAPSHOT",
+    "Bundle-Version": "1.0.2",
     "Bundle-Name": "Content:Office Locations",
     "Bundle-Localization": [],
     "Bundle-Description": "This bundle provides data and functionality for the content of office locations",
