@@ -11,11 +11,20 @@
             "windowmanager",
             "toolset",
             "toolrules",
-            "content_office_locations",
-            "basemaptoggler"
+            "basemaptoggler",
+            "banner",
+            "content_office_locations"
         ]
     },
     "bundles": {
+        "banner": {
+            "BannerWidget": {
+                "label": "Developer Network",
+                "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+                "imagePosition": "above",
+                "link": "http://developernetwork.conterra.de"
+            }
+        },
         "map": {
             "MapState": {
                 "initialExtent": {
