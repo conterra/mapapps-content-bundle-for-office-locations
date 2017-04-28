@@ -1,76 +1,112 @@
 {
-    "properties": {    
-     "amdPackages": "apprt@^3.2.1"
+  "properties": {
+    "amdPackages": "apprt@^3.2.1"
+  },
+  "load": {
+    "bundleLocations": [
+      "localbundles",
+      "bundles"
+    ],
+    "allowedBundles": [
+      "system@^3.2.1",
+      "splashscreen@^3.2.1",
+      "map@^3.2.1",
+      "themes@^3.2.1",
+      "templates@^3.2.1",
+      "templatelayout@^3.2.1",
+      "windowmanager@^3.2.1",
+      "toolset@^3.2.1",
+      "toolrules@^3.2.1",
+      "basemaptoggler@^3.2.1",
+      "banner@^3.2.1",
+      "custominfo@^3.2.1",
+      "content_office_locations"
+    ]
+  },
+  "bundles": {
+    "banner": {
+      "BannerWidget": {
+        "label": "Developer Network",
+        "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+        "imagePosition": "above",
+        "link": "http://developernetwork.conterra.de"
+      }
     },
-    "load": {
-        "bundleLocations": ["localbundles", "bundles"],
-        "allowedBundles": [
-            "system@^3.2.1",
-            "splashscreen@^3.2.1",
-            "map@^3.2.1",
-            "themes@^3.2.1",
-            "templates@^3.2.1",
-            "templatelayout@^3.2.1",
-            "windowmanager@^3.2.1",
-            "toolset@^3.2.1",
-            "toolrules@^3.2.1",
-            "basemaptoggler@^3.2.1",
-            "banner@^3.2.1",
-            "content_office_locations"
-        ]
-    },
-    "bundles": {
-        "banner": {
-            "BannerWidget": {
-                "label": "Developer Network",
-                "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
-                "imagePosition": "above",
-                "link": "http://developernetwork.conterra.de"
+    "custominfo": {
+      "CustomInfoToggleTool": [
+        {
+          "id": "customInfoTool",
+          "activateOnStartup": true,
+          "title": "Information",
+          "tooltip": "Information",
+          "iconClass": "icon-custom-info-info",
+          "toolClass": "ctInfo",
+          "togglable": true,
+          "widgetSettings": {
+            "content": "This app shows an example configuration of a content bundle which adds a thematic map service to the map, extends the search and registers simple thematic data dialogs.",
+            "window": {
+              "title": "Information",
+              "marginBox": {
+                "w": 300,
+                "h": 110,
+                "l": 25,
+                "b": 70
+              },
+              "draggable": true,
+              "closable": true,
+              "modal": false,
+              "maximizable": false,
+              "resizable": false
             }
-        },
-        "map": {
-            "MapState": {
-                "initialExtent": {
-                    "xmin": -1100000,
-                    "ymin": 4000000,
-                    "xmax": 3500000,
-                    "ymax": 8800000,
-                    "spatialReference": {
-                        "wkid": 3857
-                    }
-                }
-            },
-            "MapModelFactory": {
-                "_configData": {
-                    "maps": [
-                        {
-                            "id": "default",
-                            "glass_pane": [],
-                            "operationalLayer": [],
-                            "baseLayer": [
-                                {
-                                    "id": "worldimage",
-                                    "title": "World Topo",
-                                    "service": "topo",
-                                    "layers": ["*"],
-                                    "enabled": true
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            "MappingResourceRegistryFactory": {
-                "_knownServices": {
-                    "services": [
-                        {
-                            "id": "topo",
-                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-                            "type": "AGS_TILED"
-                        }
-                    ]
-                }
-            }
+          }
         }
+      ]
+    },
+    "map": {
+      "MapState": {
+        "initialExtent": {
+          "xmin": -1100000,
+          "ymin": 4000000,
+          "xmax": 3500000,
+          "ymax": 8800000,
+          "spatialReference": {
+            "wkid": 3857
+          }
+        }
+      },
+      "MapModelFactory": {
+        "_configData": {
+          "maps": [
+            {
+              "id": "default",
+              "glass_pane": [],
+              "operationalLayer": [],
+              "baseLayer": [
+                {
+                  "id": "worldimage",
+                  "title": "World Topo",
+                  "service": "topo",
+                  "layers": [
+                    "*"
+                  ],
+                  "enabled": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "MappingResourceRegistryFactory": {
+        "_knownServices": {
+          "services": [
+            {
+              "id": "topo",
+              "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+              "type": "AGS_TILED"
+            }
+          ]
+        }
+      }
     }
+  }
 }
