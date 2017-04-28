@@ -5,9 +5,12 @@ This example configuration of a content bundle adds a thematic map service to th
 
 For this function we now offer a first implementation for free download. The example configuration of Content Bundles bound to the locations of Esri companies in the map, extends the search and registers simple thematic data dialog for the businesses. All this can of course be copied and reconfigured as required.
 
-### Sample App
+Sample App
+------------------
 http://www.mapapps.de/mapapps/resources/apps/downloads_content_office_locations/index.html
 
+Development Guide
+------------------
 ### Define the mapapps remote base
 Before you can run the project you have to define the mapapps.remote.base property in the pom.xml-file:
 `<mapapps.remote.base>http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%</mapapps.remote.base>`
